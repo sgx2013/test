@@ -79,7 +79,7 @@ BOOL iic_drv_send(U8 slave_address, U8 *iic_data, U8 length, U8 channel, U8 opti
             do
             {   
                os_sem_wait(i2c_sem_wait[channel],2 OS_MSECOND);//os_dly_wait(1); //2ms 
-               tm_delay_us(10);//just fix i2c stop timing here
+               tm_delay_us(10);
                 if(iic_wait_counter++ >= 50) //50*2 = 100ms
                 {
                     return FALSE;
@@ -129,7 +129,7 @@ BOOL iic_drv_read(U8 slave_address, U8 *iic_data, U8 length, U8 channel, U8 opti
             do
             {
                 os_sem_wait(i2c_sem_wait[channel],2 OS_MSECOND);//os_dly_wait(1); //2ms
-                tm_delay_us(10);//just fix i2c stop timing here
+                tm_delay_us(10);
                 if(iic_wait_counter++ >= 50)   //50*2 = 100ms
                 {
                     return FALSE;
